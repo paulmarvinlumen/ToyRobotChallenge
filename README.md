@@ -1,6 +1,7 @@
 ---------------------------------------------------------------------------------------------------------------------------------------------
 Toy Robot Coding Challenge
 Instructions
+
 	a. You are required to simulate a toy robot moving on a square tabletop, of dimensions 5 units x 5 units.
 	b. There are no other obstructions on the table surface. The robot is free to roam around the surface of the table, but must be prevented from falling to destruction.
 	c. Any movement that would result in the robot falling from the table must be prevented, however further valid movement commands must still be allowed.
@@ -14,7 +15,8 @@ Instructions
 		We like to see how you work, not just the end result.
 
 Commands
-All commands should provide output indicating whether or not they succeeded.	
+All commands should provide output indicating whether or not they succeeded.
+
 	a. PLACE X,Y,DIRECTION
 		X and Y are integers that indicate a location on the tabletop.
 		DIRECTION is a string indicating which direction the robot should face. It it one of the four cardinal directions: NORTH, EAST, SOUTH or WEST.
@@ -54,6 +56,7 @@ To Use:
 	4. Maximize the CLI for better display out.
 
 Assumption:
+
 	1. Start x,y position will be (0,0) coordinates.
 	2. All Commands will be save in Commands.txt file. And it will be uploaded to Toy Robot Simulator.
 	3. Assume all machine using this simulator has a C:\ drive where the Commands.txt will be save.
