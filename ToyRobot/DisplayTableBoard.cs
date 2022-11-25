@@ -47,7 +47,11 @@ namespace ToyRobot
             Console.WriteLine(Environment.NewLine);
             Console.WriteLine(string.Format("{0}: {1}", _commandStatus.Length > 0 ? "Command Failed" : "Command Successfully Executed", _commandStatus));
             Console.WriteLine(Environment.NewLine);
-            Console.WriteLine("Toy Robot is currently facing " + robotPosition + ".");
+
+            if (_commandStatus == string.Empty)
+            {
+                Console.WriteLine("Toy Robot is currently facing " + robotPosition + ".");
+            }
         }
 
         public void PrintLine()

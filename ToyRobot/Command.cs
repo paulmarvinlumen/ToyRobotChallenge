@@ -23,21 +23,25 @@ namespace ToyRobot
             {
                 ProcessCommand(command);
 
-                if (Message == ErrorInputs)
+                if (Message == ErrorInputs || Simulation.robot == null)
                 {
                     Console.Clear();
+                    if (Simulation.CommandStatus != null && Simulation.CommandStatus != string.Empty)
+                    {
+                        Message = Simulation.CommandStatus;
+                    }
                     break;
                 }
                 if (Message.Length > 1)
                 {
-                    Simulation.displaySimulation(); //Display Simulation to CLI
+                    Simulation.DisplaySimulation(); //Display Simulation to CLI
                     Console.WriteLine(Environment.NewLine);
                     Console.WriteLine(Message);
                     Message = "";
                 }
                 else
                 {
-                    Simulation.displaySimulation(); //Display Simulation to CLI
+                    Simulation.DisplaySimulation(); //Display Simulation to CLI
                 }
 
                 Console.WriteLine(Environment.NewLine);
@@ -63,10 +67,11 @@ namespace ToyRobot
                         Simulation.Place(x, y, coordinates[3]);
                     }
                 }
-                if (Simulation.robot == null)
+                else
                 {
                     Message = ErrorInputs;
                 }
+
             }
             else if (Regex.IsMatch(command, "^MOVE") || Regex.IsMatch(command, "^RIGHT") || Regex.IsMatch(command, "^LEFT"))
             {

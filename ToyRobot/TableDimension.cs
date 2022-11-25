@@ -4,12 +4,34 @@
     {
         public int width;
         public int length;
-        public bool IsValidLocation(int x, int y) => x >= 0 && x < width && y >= 0 && y < length;
+        public bool IsValidLocation(int x, int y)
+        {
+            bool ret = false;
 
-        public bool IsValidMove(int x, int y, string _direction)
+            if (x >= 0 && x < width && y >= 0 && y < length)
+            {
+                ret = true;
+            }
+
+            return ret;
+        }
+
+        public bool IsValidDirection(string direction)
+        {
+            bool ret = false;
+
+            if (direction == "north" || direction == "east" || direction == "west" || direction == "south")
+            {
+                ret = true;
+            }
+
+            return ret;
+        }
+
+        public bool IsValidMove(int x, int y, string direction)
         {
             bool ret = true;
-            if ((x == 0 && _direction == "west") || (y == 0 && _direction == "south") || (x == width-1 && _direction == "east") || (y == length-1 && _direction == "north"))
+            if ((x == 0 && direction == "west") || (y == 0 && direction == "south") || (x == width-1 && direction == "east") || (y == length-1 && direction == "north"))
             {
                 ret = false;
             }

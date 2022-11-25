@@ -5,7 +5,8 @@
         public Robot robot;
         public TableDimension Surface;
         private DisplayTableBoard displayTableBoard;
-        private string CommandSteps, CommandStatus;
+        private string CommandSteps;
+        public string CommandStatus;
 
         public Simulator(TableDimension table)
         {
@@ -15,7 +16,10 @@
 
         public void Place(int _x, int _y, string direction)
         {
-            if (Surface.IsValidLocation(_x, _y))
+            bool IsLocationValid = Surface.IsValidLocation(_x, _y);
+            bool IsDirectionValid = Surface.IsValidDirection(direction.ToLower());
+
+            if (IsDirectionValid && IsLocationValid)
             {
                 robot = new Robot
                 {
@@ -26,6 +30,16 @@
 
                 CommandSteps = "PLACE";
                 CommandStatus = string.Empty;
+            }
+            else if (!IsLocationValid)
+            {
+                CommandSteps = "PLACE";
+                CommandStatus = "Place Location is outside the specific dimension or area.";
+            }
+            else if (!IsDirectionValid)
+            {
+                CommandSteps = "PLACE";
+                CommandStatus = "Place Direction is not valid direction: \n Valid directions are north, east, south and west.";
             }
         }
 
@@ -56,13 +70,9 @@
                         break;
                 }
             }
-            else
-            {
-                CommandStatus = "Place Command has not been executed.";
-            }
         }
 
-        public void displaySimulation()
+        public void DisplaySimulation()
         {
             if (robot != null)
             {
